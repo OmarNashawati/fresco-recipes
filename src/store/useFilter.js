@@ -11,6 +11,7 @@ export const useFilterStore = defineStore('filter', () => {
     fetchRecipeByLetter,
     fetchRecipeByCategory,
     fetchRecipeByCountry,
+    fetchRecipesByIngredient,
   } = useRecipes();
 
   const filteredRecipes = computed(() => {
@@ -33,6 +34,10 @@ export const useFilterStore = defineStore('filter', () => {
     fetchRecipeByCountry(country);
   }
 
+  function filterByIngredient(ingredient) {
+    fetchRecipesByIngredient(ingredient);
+  }
+
   return {
     filteredRecipes,
     error,
@@ -41,5 +46,6 @@ export const useFilterStore = defineStore('filter', () => {
     filterByLetter,
     filterByCategory,
     filterByCountry,
+    filterByIngredient,
   };
 });

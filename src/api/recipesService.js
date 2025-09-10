@@ -61,3 +61,8 @@ export const getRecipesByLetter = async (letter) => {
   const res = await api.get(`search.php?f=${letter}`);
   return res.data.meals.map(normalizeRecipe);
 };
+
+export const getRecipesByIngredient = async (ingredient) => {
+  const res = await api.get(`filter.php?i=${ingredient}`);
+  return res.data.meals.map(normalizeRecipe);
+};

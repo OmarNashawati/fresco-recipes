@@ -5,6 +5,7 @@ import {
   getRecipesByCountry,
   getRecipesByLetter,
   getRendomRecipes,
+  getRecipesByIngredient,
 } from '@/api/recipesService';
 import { ref } from 'vue';
 
@@ -85,6 +86,18 @@ export function useRecipes() {
     }
   };
 
+  const fetchRecipesByIngredient = async (ingredient) => {
+    loading.value = true;
+    try {
+      const data = await getRecipesByIngredient(ingredient);
+      recipes.value = data;
+    } catch (err) {
+      error.value = err;
+    } finally {
+      loading.value = false;
+    }
+  };
+
   return {
     recipes,
     loading,
@@ -95,5 +108,6 @@ export function useRecipes() {
     fetchRecipeByCountry,
     fetchRecipeByLetter,
     fetchRandomRecipes,
+    fetchRecipesByIngredient,
   };
 }

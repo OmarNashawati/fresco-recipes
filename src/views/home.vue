@@ -8,12 +8,12 @@ import { useRecipes } from '@/composables/useRecipes';
 const { recipes, loading, error, fetchRandomRecipes } = useRecipes();
 
 onMounted(async () => {
-  fetchRandomRecipes(6);
+  // fetchRandomRecipes(6);
 });
 </script>
 
 <template>
-  <HeroRecipe />
+  <!-- <HeroRecipe /> -->
 
   <section class="mt-10">
     <h1 class="font-bold text-orange-500 text-3xl">What To Cook ?</h1>

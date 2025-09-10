@@ -26,21 +26,25 @@ export const useCountries = () => {
       const data = [
         {
           name: 'italy',
+          adjective: 'italian',
           image: 'italy.png',
           recipesCount: 21,
         },
         {
           name: 'Mexico',
+          adjective: 'Mexican',
           image: 'mexico.png',
           recipesCount: 6,
         },
         {
           name: 'Japan',
+          adjective: 'Japanese',
           image: 'japan.png',
           recipesCount: 9,
         },
         {
           name: 'United Kingdom',
+          adjective: 'British',
           image: 'uk.png',
           recipesCount: 57,
         },

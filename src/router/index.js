@@ -19,7 +19,7 @@ const routes = [
         },
       },
       {
-        path: '/',
+        path: '/recipes/:filterType?/:filterValue?',
         name: 'recipes',
         component: Recipes,
         meta: {
@@ -27,7 +27,7 @@ const routes = [
         },
       },
       {
-        path: '/',
+        path: '/ingredients',
         name: 'ingredients',
         component: Ingredients,
         meta: {

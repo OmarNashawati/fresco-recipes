@@ -19,8 +19,13 @@ onMounted(() => {
 <template>
   <div class="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3 h-[220px]">
     <div
-      @click="router.push({ name: 'recipes' })"
       v-for="country in countries"
+      @click="
+        router.push({
+          name: 'recipes',
+          params: { filterType: 'countries', filterValue: country.adjective },
+        })
+      "
       class="cursor-pointer relative h-full bg-orange-300 shadow rounded overflow-hidden flex items-end justify-center hover:shadow-xl"
     >
       <img

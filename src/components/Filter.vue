@@ -3,16 +3,34 @@ import { useCategories } from '@/composables/useCategories';
 import { useCountries } from '@/composables/useCountries';
 import { useFilterStore } from '@/store/useFilter';
 import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
 const { categories } = useCategories();
 const { countries, fetchCountries } = useCountries();
-const { search, filterByLetter, filterByCategory, filterByCountry } = useFilterStore();
+const { search, filterByLetter, filterByCategory, filterByCountry, filterByIngredient } =
+  useFilterStore();
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 const searchQuery = ref('');
 const selectedCategory = ref('');
 const selectedCountry = ref('');
+
+if (route.params.filterType && route.params.filterValue) {
+  const { filterType, filterValue } = route.params;
+
+  if (filterType === 'countries') {
+    console.log(route.params);
+    filterByCountry(filterValue);
+    selectedCountry.value = filterValue;
+  }
+
+  if (filterType === 'ingredients') {
+    console.log(route.params);
+    filterByIngredient(filterValue);
+  }
+}
 
 onMounted(() => {
   fetchCountries();
