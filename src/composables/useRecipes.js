@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import {
   getRecipeByID,
   getRecipes,
@@ -7,7 +8,6 @@ import {
   getRendomRecipes,
   getRecipesByIngredient,
 } from '@/api/recipesService';
-import { ref } from 'vue';
 
 export function useRecipes() {
   const recipes = ref([]);

@@ -15,7 +15,7 @@ function normalizeRecipe(recipe) {
   };
 
   const instructions = () => {
-    return recipe?.strInstructions.split('.');
+    return recipe?.strInstructions?.split('.');
   };
 
   return {
@@ -38,6 +38,7 @@ export const getRecipes = async (query) => {
 };
 
 export const getRecipesByCategory = async (category) => {
+  console.log(category);
   const res = await api.get(`filter.php?c=${category}`);
   return res.data.meals.map(normalizeRecipe);
 };

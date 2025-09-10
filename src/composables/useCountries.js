@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { getCountries } from '@/api/CountriesService';
 
 export const useCountries = () => {

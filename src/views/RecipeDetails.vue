@@ -43,12 +43,15 @@ onMounted(async () => {
 
       <div class="w-full md:w-[50%]">
         <h2 class="text-2xl font-semibold">Ingredients</h2>
-        <div v-for="ingredient in recipes.ingredients">
+        <div v-for="(ingredient, index) in recipes.ingredients" :key="index">
           <div class="text-s grid grid-cols-2 py-1">
             <p class="font-semibold">{{ ingredient.name }}</p>
-            <p>{{ ingredient.measure }}</p>
+            <p class="text-end">{{ ingredient.measure }}</p>
           </div>
-          <div class="bg-gray-300 h-[1px] w-full"></div>
+          <div
+            v-if="index !== recipes.ingredients.length - 1"
+            class="bg-gray-300 h-[1px] w-full"
+          ></div>
         </div>
       </div>
     </div>
@@ -56,7 +59,7 @@ onMounted(async () => {
     <div>
       <div class="my-5">
         <h2 class="text-2xl font-semibold mb-3">Instructions</h2>
-        <p v-for="(item, index) in recipes.instructions">
+        <p v-for="(item, index) in recipes.instructions" :key="index">
           <span v-if="item"
             ><strong class="text-orange-500">{{ index + 1 }}.</strong> {{ item }}</span
           >

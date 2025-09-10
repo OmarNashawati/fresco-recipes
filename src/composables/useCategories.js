@@ -1,5 +1,5 @@
+import { ref } from 'vue';
 import { getCategories, getTopCategories } from '@/api/categoreyService';
-import { onMounted, ref } from 'vue';
 
 export const useCategories = () => {
   const categories = ref([]);

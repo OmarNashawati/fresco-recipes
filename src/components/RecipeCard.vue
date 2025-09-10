@@ -10,7 +10,11 @@ const props = defineProps(['recipe']);
     </RouterLink>
     <div class="p-2">
       <p class="text-2xl font-semibold">{{ recipe.title }}</p>
-      <p>{{ recipe.country }}</p>
+      <div v-if="recipe.country && recipe.category" class="flex gap-2 pt-2">
+        <p>{{ recipe.country }}</p>
+        <span>•</span>
+        <p>{{ recipe.category }}</p>
+      </div>
     </div>
   </div>
 </template>

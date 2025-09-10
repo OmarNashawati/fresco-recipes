@@ -6,7 +6,7 @@ import Navbar from './Navbar.vue';
 <template>
   <Navbar />
 
-  <main class="p-8 max-w-[1200px] m-auto">
+  <main class="p-4 md:p-8 max-w-[1200px] m-auto">
     <RouterView />
   </main>
 </template>

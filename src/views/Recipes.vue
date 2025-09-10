@@ -8,7 +8,7 @@ const { filteredRecipes, error, loading } = useFilterStore();
 
 <template>
   <div>
-    <div class="flex gap-4 py-5">
+    <div class="flex flex-col sm:flex-row gap-4 py-5">
       <Filter />
       <RecipesList :loading="loading" :error="error" :recipes="filteredRecipes" />
     </div>

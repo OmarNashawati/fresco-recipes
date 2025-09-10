@@ -47,20 +47,26 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 });
 
 router.beforeEach((to, from, next) => {
-  // Check if a title is defined in the route's meta
   if (to.meta.title) {
     if (typeof to.meta.title === 'function') {
-      document.title = to.meta.title(to); // Call the function for dynamic titles
+      document.title = to.meta.title(to);
     } else {
-      document.title = to.meta.title; // Use the static title
+      document.title = to.meta.title;
     }
   } else {
     document.title = 'Fresco Recipes'; // Fallback to default title
   }
-  next(); // Continue the navigation
+  next();
 });
 
 export default router;
