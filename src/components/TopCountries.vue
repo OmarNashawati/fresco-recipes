@@ -17,7 +17,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3 h-[220px]">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 h-[220px]">
     <div
       v-for="country in countries"
       @click="

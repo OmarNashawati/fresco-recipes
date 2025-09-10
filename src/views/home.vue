@@ -4,11 +4,12 @@ import RecipesList from '@/components/RecipesList.vue';
 import TopCountries from '@/components/TopCountries.vue';
 import { onMounted, ref } from 'vue';
 import { useRecipes } from '@/composables/useRecipes';
+import SectionTitle from '@/components/SectionTitle.vue';
 
 const { recipes, loading, error, fetchRandomRecipes } = useRecipes();
 
 onMounted(async () => {
-  // fetchRandomRecipes(6);
+  fetchRandomRecipes(6);
 });
 </script>
 
@@ -16,13 +17,13 @@ onMounted(async () => {
   <!-- <HeroRecipe /> -->
 
   <section class="mt-10">
-    <h1 class="font-bold text-orange-500 text-3xl">What To Cook ?</h1>
+    <SectionTitle>What To Cook ?</SectionTitle>
     <RecipesList :loading="loading" :error="error" :recipes="recipes" />
   </section>
 
-  <section>
+  <section class="mt-10">
     <div>
-      <h1 class="font-bold text-orange-500 text-3xl">Top Countries</h1>
+      <SectionTitle>Top Countries</SectionTitle>
       <TopCountries />
     </div>
   </section>
