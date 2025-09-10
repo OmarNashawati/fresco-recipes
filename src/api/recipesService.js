@@ -14,12 +14,16 @@ function normalizeRecipe(recipe) {
     return x;
   };
 
+  const instructions = () => {
+    return recipe?.strInstructions.split('.');
+  };
+
   return {
     id: recipe?.idMeal ?? null,
     title: recipe?.strMeal ?? 'Unknown',
     category: recipe?.strCategory ?? '',
     country: recipe?.strArea ?? '',
-    instructions: recipe?.strInstructions,
+    instructions: instructions(),
     tags: recipe?.strTags?.split(',') ?? [],
     image: recipe?.strMealThumb ?? 'https://placehold.co/600x400/orange/white?text=Recipe\nImage',
     youtube: recipe?.strYoutube ?? 'Not Provided',
