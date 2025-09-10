@@ -5,6 +5,7 @@ import TopCountries from '@/components/TopCountries.vue';
 import { onMounted, ref } from 'vue';
 import { useRecipes } from '@/composables/useRecipes';
 import SectionTitle from '@/components/SectionTitle.vue';
+import TopCategories from '@/components/TopCategories.vue';
 
 const { recipes, loading, error, fetchRandomRecipes } = useRecipes();
 
@@ -14,7 +15,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <!-- <HeroRecipe /> -->
+  <HeroRecipe />
 
   <section class="mt-10">
     <SectionTitle>What To Cook ?</SectionTitle>
@@ -22,9 +23,12 @@ onMounted(async () => {
   </section>
 
   <section class="mt-10">
-    <div>
-      <SectionTitle>Top Countries</SectionTitle>
-      <TopCountries />
-    </div>
+    <SectionTitle>Top Countries</SectionTitle>
+    <TopCountries />
+  </section>
+
+  <section class="mt-10">
+    <SectionTitle>Top Categories</SectionTitle>
+    <TopCategories />
   </section>
 </template>

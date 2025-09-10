@@ -12,3 +12,7 @@ img {
 .transparent-bg {
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+.transparent-bg-ii {
+  background-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,4 +1,4 @@
-import { getCategories } from '@/api/categoreyService';
+import { getCategories, getTopCategories } from '@/api/categoreyService';
 import { onMounted, ref } from 'vue';
 
 export const useCategories = () => {
@@ -19,9 +19,18 @@ export const useCategories = () => {
     }
   };
 
-  onMounted(() => {
-    fetchCategories();
-  });
+  const fetchTopCategories = async () => {
+    loading.value = true;
 
-  return { categories, error, loading };
+    try {
+      const data = await getTopCategories();
+      categories.value = data;
+    } catch (err) {
+      error.value = err;
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  return { categories, error, loading, fetchTopCategories, fetchCategories };
 };

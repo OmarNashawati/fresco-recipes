@@ -23,12 +23,14 @@ if (route.params.filterType && route.params.filterValue) {
   if (filterType === 'countries') {
     console.log(route.params);
     filterByCountry(filterValue);
-    selectedCountry.value = filterValue;
   }
 
   if (filterType === 'ingredients') {
-    console.log(route.params);
     filterByIngredient(filterValue);
+  }
+
+  if (filterType === 'categories') {
+    filterByCategory(filterValue);
   }
 }
 
