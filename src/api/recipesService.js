@@ -48,9 +48,9 @@ export const getRecipeByID = async (id) => {
   return normalizeRecipe(res.data.meals[0]);
 };
 
-export const getRendomRecipe = async () => {
+export const getRendomRecipes = async (num) => {
   const recipes = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < num; i++) {
     const res = await api.get('random.php');
     recipes.push(res.data.meals[0]);
   }

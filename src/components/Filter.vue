@@ -2,10 +2,10 @@
 import { useCategories } from '@/composables/useCategories';
 import { useCountries } from '@/composables/useCountries';
 import { useFilterStore } from '@/store/useFilter';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const { categories } = useCategories();
-const { countries } = useCountries();
+const { countries, fetchCountries } = useCountries();
 const { search, filterByLetter, filterByCategory, filterByCountry } = useFilterStore();
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -13,6 +13,10 @@ const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const searchQuery = ref('');
 const selectedCategory = ref('');
 const selectedCountry = ref('');
+
+onMounted(() => {
+  fetchCountries();
+});
 </script>
 
 <template>

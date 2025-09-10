@@ -1,17 +1,22 @@
 <script setup>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useRecipes } from '@/composables/useRecipes';
 const route = useRoute();
 const { recipes, error, loading, fetchRecipeById } = useRecipes();
 
-onMounted(() => {
-  fetchRecipeById(route.params.id);
+onMounted(async () => {
+  await fetchRecipeById(route.params.id);
+
+  route.meta.title = recipes.value.title;
+  document.title = recipes.value.title;
 });
 </script>
 
 <template>
-  <div class="flex flex-col max-w-[800px] m-auto">
+  <p v-if="loading">Loading...</p>
+  <p v-if="error">Error: {{ error.message }}</p>
+  <div v-if="!loading && !error" class="flex flex-col max-w-[800px] m-auto">
     <h1 class="text-4xl font-semibold">{{ recipes.title }}</h1>
     <div class="flex justify-between mb-3">
       <p>{{ recipes.category }}</p>

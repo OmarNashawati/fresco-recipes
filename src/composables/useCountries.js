@@ -19,9 +19,39 @@ export const useCountries = () => {
     }
   };
 
-  onMounted(() => {
-    fetchCountries();
-  });
+  const fetchTopCounties = () => {
+    loading.value = true;
 
-  return { countries, loading, error };
+    try {
+      const data = [
+        {
+          name: 'italy',
+          image: 'italy.png',
+          recipesCount: 21,
+        },
+        {
+          name: 'Mexico',
+          image: 'mexico.png',
+          recipesCount: 6,
+        },
+        {
+          name: 'Japan',
+          image: 'japan.png',
+          recipesCount: 9,
+        },
+        {
+          name: 'United Kingdom',
+          image: 'uk.png',
+          recipesCount: 57,
+        },
+      ];
+      countries.value = data;
+    } catch (err) {
+      error.value = err;
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  return { countries, loading, error, fetchCountries, fetchTopCounties };
 };
